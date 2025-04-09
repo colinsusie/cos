@@ -1,0 +1,60 @@
+import "google/protobuf/descriptor.proto";
+
+// 文件级别的选项扩展
+extend google.protobuf.FileOptions {
+  // 指定基础的命名空间
+  optional string so_ns_base = 50000;
+}
+
+// 消息级别的选项扩展
+extend google.protobuf.MessageOptions {
+  // 指定对应的C#类，co_ns_base.co_class 得到类全名
+  // 如果不指定且消息以Pb开头，则默认类名为去掉Pb的名字
+  optional string so_class = 50001;
+}
+
+// 指定repeated对应的类
+enum RepeatedClass {
+  // 列表(默认)
+  RCList = 0;
+  // 哈希集
+  RcHashSet = 1;
+  // 字典
+  RcDict = 2;
+}
+
+// 指定RcDict的Key类型
+enum RcDictKey {
+  // int
+  RcDictKeyInt = 0;
+  // long
+  RcDictKeyLong = 1;
+  // string
+  RcDictKeyString = 2;
+  // Type：Value消息里面必须是oneof
+  RcDictKeyType = 3;
+}
+
+// 指定map对应的类
+enum MapClass {
+  // 字典(默认)
+  McDict = 0;
+}
+
+// 字段选项扩展
+extend google.protobuf.FieldOptions {
+  // repeated对应的C#类
+  optional RepeatedClass so_repeated_class = 50002;
+  // 如果repeated是RcDict，指定Key的类型
+  optional RcDictKey so_rcdict_key_type = 50003;
+  // 如果repeated是RcDict，元素必须是Message，且要指定Key是值Message的哪一个字段
+  optional string so_rcdict_key_name = 50004;
+  // map对应的C#类
+  optional MapClass so_map_class = 50005;
+  // 自定义字段，不生成代码；需要手动写序列化和反序列化
+  optional bool so_custom_field = 50006;
+}
+
+//extend google.protobuf.OneofOptions {
+//  
+//}

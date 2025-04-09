@@ -1,0 +1,29 @@
+syntax = "proto3";
+package SerializeDemo;
+import "SerializeOptions.proto";
+
+// 生成的Pb类的命名空间
+option csharp_namespace = "SerializeDemo";
+// C#的基础命名空间
+option (so_ns_base) = "SerializeDemo.Game";
+
+// 背包
+message PbBackPack {
+  // 对应的类名
+  option (so_class) = "BackPack";
+  
+  // 物品列表
+  repeated PbBackPackItem Items = 1;
+}
+
+// 物品
+message PbBackPackItem {
+  option (so_class) = "BackPackItem";
+
+  // 物品Id
+  int32 Id = 1;
+  // 物品编号
+  int32 No = 2;
+  // 堆叠数
+  int32 StackingNumber = 3;   
+}

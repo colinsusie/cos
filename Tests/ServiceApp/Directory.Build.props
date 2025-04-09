@@ -1,0 +1,12 @@
+<Project>
+    <PropertyGroup>
+        <!--去除多余语言包文件夹-->
+        <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+        <!--输出路径不附加$(TargetFramework)属性-->
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <!--设置二进制文件目录-->
+        <OutputPath>$(MSBuildThisFileDirectory)Bin/$(MSBuildProjectName)</OutputPath>
+        <!--设置obj文件目录-->
+        <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)Obj/$(MSBuildProjectName)</BaseIntermediateOutputPath>
+    </PropertyGroup>
+</Project>

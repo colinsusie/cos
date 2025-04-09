@@ -1,0 +1,37 @@
+# 日志配置
+LogOptions:
+  MinLogLevel: Debug          # 最小输出日志等级
+  AsyncOutput: true           # 异步输出
+  AsyncQueueCapacity: 100000  # 异步输出队列最大容量，超过会丢弃
+  LogConsoleOptions:          # 控制台日志
+    MinLogLevel: Debug        # 最小输出日志等级
+  LogFileOptions:             # 文件日志
+    - LogPath: ../../logs/{ProcessName}-{ProcessId}-{DateTime}.log     # 日志输出路径
+      RollOnFileSize: 52428800      # 文件超过多大切割
+
+# 事件循环配置   
+EventLoopOptions:           # 事件循环配置
+  Count: 4                  # 事件循环数量
+  Groups:                   # 事件循环分组
+    g: 2
+    rpc: 2
+
+# 服务管理器配置
+ServiceManagerOptions:
+  ServiceBasePath: ../        # 服务程序集的根目录
+
+# RPC选项      
+RpcOptions:
+  EventLoopGroup: rpc     # 所属的事件循环组
+  Host: 127.0.0.1   # 监听的地址
+  Port: 16600       # 监听的端口
+
+# 集群配置
+ClusterOptions:
+  StatusTtl: 00:00:16                     # 状态更新TTL
+  StatusInterval: 00:00:5                 # 状态更新间隔
+  WatchApps: []
+
+# 服务组配置    
+ServiceGroupsOptions:
+  Groups: []

@@ -1,0 +1,85 @@
+syntax = "proto3";
+package SerializeDemo;
+import "SerializeOptions.proto";
+//import "PbBackPack.proto";
+
+// 生成的Pb类的命名空间
+option csharp_namespace = "SerializeDemo";
+// 生成C#类的基础命名空间
+option (so_ns_base) = "SerializeDemo.Game";
+
+// 玩家
+message PbPlayer {
+  // C#类名
+  option (so_class) = "Player";
+
+  // 唯一Id
+  int32 Id = 1;
+  // 名字
+  string Name = 2;
+  // 等级
+  int32 Level = 3;
+  repeated PbSkill Skill = 4;
+//  // 背包
+//  PbBackPack BackPack = 4;
+//  // 技能信息
+//  map<int32, PbSkill> Skills = 5;
+//  // 组件列表
+//  repeated PbPlayerComp Comps = 6 [(so_repeated_class) = RcDict, (so_rcdict_key_type) = RcDictKeyType];
+}
+
+message PbSkill {
+  int32 Id = 1;     // 技能Id
+  int32 Level = 2;  // 技能等级
+}
+
+//// 技能
+//message PbSkill {
+//  option (so_class) = "Skill";
+//  
+//  int32 Id = 1;     // 技能Id
+//  int32 Level = 2;  // 技能等级
+//}
+
+//// 玩家组件
+//message PbPlayerComp {
+//  oneof PbPlayerComp {
+//    // 角色组件
+//    PbRoleComp RoleComp = 1;
+//    // 功能组件
+//    PbFuncComp FuncComp = 2;    
+//  }
+//}
+//
+//// 角色组件
+//message PbRoleComp {
+//  option (so_class) = "Components.RoleComp";
+//
+//  // 角色列表
+//  repeated PbRole Roles = 1 [
+//    (so_repeated_class) = RcDict, 
+//    (so_rcdict_key_type) = RcDictKeyInt, 
+//    (so_rcdict_key_name) = "Id"];   
+//}
+//
+//// 角色
+//message PbRole {
+//  option (so_class) = "Components.Role";
+//  
+//  int32 Id = 1;         // 角色Id
+//  int32 Level = 2;      // 等级
+//}
+//
+//// 功能编号
+//enum FuncNo {
+//  FUNCNO_Guild = 0;       // 帮派
+//  FUNCNO_Friend = 1;      // 好友
+//}
+//
+//// 功能组件
+//message PbFuncComp {
+//  option (so_class) = "Components.FuncComp";
+//
+//  // 开放的功能编号
+//  repeated FuncNo FuncNos = 1 [(so_repeated_class) = RcHashSet];   
+//}
