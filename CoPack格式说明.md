@@ -110,7 +110,7 @@ cookie 和 payload 组成一个 VarInt，规则如下：
 
 type等于Float(2)，代表一个浮点值
 
-cookie 标识是比单精度还是双精度，0表示0值无payload，1表示单精度payload为4个字节的浮点数，2表示双精度payload为8字节的浮眯数：
+cookie 标识是比单精度还是双精度，0表示0值无payload，1表示单精度payload为4个字节的浮点数，2表示双精度payload为8字节的浮点数：
 
 ```bash
 +---------+
